@@ -1,0 +1,7 @@
+1. get username form input 
+2. check in existing data user avialable or not, if not then get data from databse
+3. show user information and repolist (ui given)
+4. on clicking on repo show the description on /description page (ui given)
+5. in User info section--> on clicking on followers show followers on /followers page.
+6. on clicking on specific follower -> show the repo list of follower.
+
