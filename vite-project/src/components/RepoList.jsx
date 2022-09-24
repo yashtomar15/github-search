@@ -1,58 +1,12 @@
 import React from "react";
-import styled from "styled-components";
 import {MdVerified} from 'react-icons/md';
 import { Link } from "react-router-dom";
+import { ReposCont,RepoName,IconDiv,Pera,Image,FlexCont,Heading,RepoInfo,RepoDesc,Flex } from "../styled/reposlist.styled";
 
-const ReposCont=styled.div`
-display:grid;
-grid-template-columns:repeat(2,1fr);
-grid-gap:20px;
-`
-const RepoName=styled.p`
-color:#3260d4;
-font-size:18px;
-font-weight:800;
-`
-const IconDiv=styled.div`
-padding:20px 0px 0px 7px;
-color:#4fa80b ;
-`
-const Pera=styled.p`
-
-`
-const Image=styled.img`
-width:80px;
-height:80px;
-border-radius:50px;
-`
-const FlexCont=styled.div`
-display:flex;
-width:70%;
-margin:auto;
-// margin-left:100px;
-`
-
-const Heading=styled.h1`
-text-align:center;
-`
-const RepoInfo=styled.div`
-position:relative;
-top:-10px;
-left:20px;
-
-`
-const RepoDesc=styled.p`
-margin-top:-15px;
-font-size:16px;
-// font-weight:500;
-color:grey;
-`
-const Flex=styled.div`
-display:flex;
-`
 export const RepoList=({reposData})=>{
     return (<>
     <Heading>Repositories</Heading>
+    
     <ReposCont>
     {reposData.map((repo)=>{
      return <FlexCont key={repo.id}>

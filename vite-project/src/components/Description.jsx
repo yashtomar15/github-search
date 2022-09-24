@@ -2,45 +2,10 @@ import React ,{useState} from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { useEffect } from "react";
-import styled from "styled-components";
 import '../generalstyle.css';
 import {MdVerified} from 'react-icons/md';
+import { RepoCont,Image,RepoImgDiv,RepoDesc,Flex,IconDiv,Pera1,Pera,RepoName } from "../styled/description.styled";
 
-const RepoCont=styled.div`
-display:flex;
-width:60%;
-margin:50px 0px 0px 300px;
-`
-const Image=styled.img`
-width:110px;
-height:110px;
-border-radius:55px;
-`
-const RepoImgDiv=styled.div`
-width:250px;
-`
-const RepoDesc=styled.div`
-width:500px;
-margin:-20px 0px 0px 50px;
-`
-const Flex=styled.div`
-display:flex;
-`
-const IconDiv=styled.div`
-padding:17px 5px 0px 0px;
-color:#4fa80b ;
-`
-const Pera1=styled.p`
-font-weight:20px;
-font-weight:600;
-`
-const Pera=styled.p`
-margin:-8px 0px 0px 0px;
-`
-const RepoName=styled.p`
-font-size:30px;
-font-weight:600;
-`
 export const Description=()=>{
     const[currentRepo,setCurrentRepo]=useState({});
     const {currentUser}=useSelector((state)=>state);
@@ -55,7 +20,7 @@ export const Description=()=>{
             }
         })
     },[])
-    // console.log(currentuser);
+    
     return (<>
     {currentRepo && (
    <RepoCont>

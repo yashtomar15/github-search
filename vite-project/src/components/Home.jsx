@@ -1,69 +1,11 @@
 import React ,{useState} from "react";
-import styled from 'styled-components';
 import '../generalstyle.css';
 import {useSelector,useDispatch} from 'react-redux';
 import {setCurrentUser,setAllUser} from '../store/actions';
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { RepoList } from "./RepoList";
-
-const InputCont=styled.div`
-// position:fixed;
-`
-const InputFlex=styled.div`
-display:flex;
-width:50%;
-margin:auto;
-margin-top:20px;
-justify-content:space-around;
-
-`
-const Input=styled.input`
-width:200px;
-height:40px;
-`
-const Button=styled.button`
-width:100px;
-height:40px;
-outline:none;
-border:none;
-border-radius:5px;
-font-size:17px;
-cursor:pointer;
-margin-top:2px;
-background-color:#4b90fe;
-color:white;
-`
-const Image=styled.img`
-width:200px;
-height:200px;
-border-radius:50px;
-margin:0px 0px 0px 10px;
-`
-const Pera=styled.p`
-font-size:22px;
-padding:0px 0px 10px 10px ;
-position:relative;
-top:25px;
-`
-const FollowersPera=styled.p`
-font-size:20px;
-padding:0px 0px 10px 10px ;
-`
-
-const Heading=styled.h3`
-padding-left:10px;
-`
-const Profile=styled.div`
-display:flex;
-justify-content:space-between;
-`
-const UserInfo=styled.div`
-margin:6% 74% 0% 0%;
-`
-const Flex=styled.div`
-display:flex;
-`
+import { InputCont,InputFlex,Input,Button,Image,Pera,FollowersPera,Heading,Profile,UserInfo,Flex } from "../styled/home.styled";
 
 export const Home=()=>{
 const [username,setUserName]=useState('');
