@@ -5,11 +5,11 @@ import {setCurrentUser,setAllUser} from '../store/actions';
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { RepoList } from "./RepoList";
-import { InputCont,InputFlex,Input,Button,Image,Pera,FollowersPera,Heading,Profile,UserInfo,Flex } from "../styled/home.styled";
+import { InputCont,InputFlex,Input,Button,MainHeading,Image,Pera,FollowersPera,Heading,Profile,UserInfo,Flex } from "../styled/home.styled";
 
 export const Home=()=>{
 const [username,setUserName]=useState('');
-const {allUser,currentUser}=useSelector((state)=>state);
+const {allUser,currentUser,currentUserFollowers}=useSelector((state)=>state);
 const dispatch=useDispatch();
 console.log(allUser,'alluser');
 console.log(currentUser,'currentuser');
@@ -44,6 +44,7 @@ const handleSearch=(e)=>{
      }    
 }
     return (<>
+    <MainHeading>Github search</MainHeading>
     {/* input and search */}
     <InputCont>
     <InputFlex>
@@ -61,7 +62,7 @@ const handleSearch=(e)=>{
         <div><Pera>{currentUser[0].owner.login}</Pera></div>
         <Flex>
         <Link to="/followers" style={{color:'#4070f4'}}><Heading>Followers</Heading></Link>
-        <FollowersPera>21</FollowersPera>
+        {currentUserFollowers.length>0 && <FollowersPera>{currentUserFollowers.length}</FollowersPera>}
         </Flex>
         </UserInfo>
     </Profile>

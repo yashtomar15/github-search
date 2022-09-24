@@ -57,3 +57,6 @@ margin:6% 74% 0% 0%;
 export const Flex=styled.div`
 display:flex;
 `
+export const MainHeading=styled.h1`
+text-align:center;
+`
