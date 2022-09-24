@@ -26,7 +26,7 @@ switch(type){
         return{...state,allFollowerRepos:[...state.allFollowerRepos,payload]}
     }
     case "SET_CURRENT_FOLLOWER_REPOS":{
-        return{...state,currentFollowerRepos:[...state.currentFollowerRepos,payload]}
+        return{...state,currentFollowerRepos:payload}
     }
     default:{
         return state;
