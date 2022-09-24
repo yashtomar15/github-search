@@ -8,11 +8,15 @@ import { Link } from "react-router-dom";
 import { RepoList } from "./RepoList";
 
 const InputCont=styled.div`
+// position:fixed;
+`
+const InputFlex=styled.div`
 display:flex;
 width:50%;
 margin:auto;
 margin-top:20px;
 justify-content:space-around;
+
 `
 const Input=styled.input`
 width:200px;
@@ -34,23 +38,42 @@ const Image=styled.img`
 width:200px;
 height:200px;
 border-radius:50px;
-margin:0px 0px 0px 400px;
+margin:0px 0px 0px 10px;
 `
 const Pera=styled.p`
-
+font-size:22px;
+padding:0px 0px 10px 10px ;
+position:relative;
+top:25px;
 `
-const Heading=styled.h3`
+const FollowersPera=styled.p`
+font-size:20px;
+padding:0px 0px 10px 10px ;
+`
 
+const Heading=styled.h3`
+padding-left:10px;
+`
+const Profile=styled.div`
+display:flex;
+justify-content:space-between;
+`
+const UserInfo=styled.div`
+margin:6% 74% 0% 0%;
+`
+const Flex=styled.div`
+display:flex;
 `
 
 export const Home=()=>{
 const [username,setUserName]=useState('');
 const {allUser,currentUser}=useSelector((state)=>state);
 const dispatch=useDispatch();
+console.log(allUser,'alluser');
+console.log(currentUser,'currentuser');
 
 const handleChange=(e)=>{
     setUserName(e.target.value);
-    // console.log(e.target.value);
 }
 
 const handleSearch=(e)=>{
@@ -61,32 +84,45 @@ const handleSearch=(e)=>{
         if(user[0].owner.login===username){
             isPresent=true;
             dispatch(setCurrentUser(user));
+            console.log('present');
         }
         })
     }
 
      if(!isPresent){
+        console.log('unpresent');
         axios.get(`https://api.github.com/users/${username}/repos`)
         .then((res)=>{
-            console.log(res.data);
+            // console.log(res.data);
             dispatch(setCurrentUser(res.data));
             dispatch(setAllUser(res.data));
+
         })
         .catch((err)=>console.log("error occurred",err));
      }    
 }
     return (<>
+    {/* input and search */}
     <InputCont>
+    <InputFlex>
     <div><Input type={'text'} value={username} onChange={handleChange} /></div>
     <div><Button onClick={handleSearch}>Search</Button></div>
+    </InputFlex>
     </InputCont>
+
+    {/* Profile */}
     {currentUser.length>0 && (
     <div>
-    <div>
+    <Profile>
         <Image src={currentUser[0].owner.avatar_url} alt="profile" />
-        <div><Heading>Username</Heading><Pera>{username}</Pera></div>
-        <div><Link to="/followers"><Heading>Followers</Heading></Link><Pera>followers count</Pera></div>
-    </div>
+        <UserInfo>
+        <div><Pera>{currentUser[0].owner.login}</Pera></div>
+        <Flex>
+        <Link to="/followers" style={{color:'#4070f4'}}><Heading>Followers</Heading></Link>
+        <FollowersPera>21</FollowersPera>
+        </Flex>
+        </UserInfo>
+    </Profile>
     <RepoList reposData={currentUser}/>
     </div>
     )}
