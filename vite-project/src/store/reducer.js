@@ -3,7 +3,9 @@ const initstate={
     allUser:[],
     currentUser:[],
     allUserFollowers:{},
-    currentUserFollowers:[]
+    currentUserFollowers:[],
+    allFollowerRepos:[],
+    currentFollowerRepos:[]
 }
 
 export const reducer=(state=initstate,{type,payload})=>{
@@ -19,6 +21,12 @@ switch(type){
     }
     case "SET_CURRENT_USER_FOLLOWERS":{
         return {...state,currentUserFollowers:payload};
+    }
+    case "SET_ALL_FOLLOWER_REPOS":{
+        return{...state,allFollowerRepos:[...state.allFollowerRepos,payload]}
+    }
+    case "SET_CURRENT_FOLLOWER_REPOS":{
+        return{...state,currentFollowerRepos:[...state.currentFollowerRepos,payload]}
     }
     default:{
         return state;
